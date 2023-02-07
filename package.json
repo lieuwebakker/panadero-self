@@ -1,6 +1,6 @@
 {
   "name": "panadero-self",
-  "version": "1.0.0",
+  "version": "0.9.1",
   "description": "test module for self",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "encode",
     "decode"
   ],
-  "author": "luis panadero",
+  "author": "luis panadero, jawsome.orbit",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lieuwebakker/panadero-self/issues"
