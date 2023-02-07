@@ -1,0 +1,30 @@
+{
+  "name": "panadero-self",
+  "version": "1.0.0",
+  "description": "test module for self",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lieuwebakker/panadero-self.git"
+  },
+  "keywords": [
+    "test",
+    "panaderos",
+    "self",
+    "npm",
+    "git",
+    "crypt",
+    "encode",
+    "decode",
+
+  ],
+  "author": "luis panadero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lieuwebakker/panadero-self/issues"
+  },
+  "homepage": "https://github.com/lieuwebakker/panadero-self#readme"
+}
