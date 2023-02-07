@@ -18,8 +18,7 @@
     "git",
     "crypt",
     "encode",
-    "decode",
-
+    "decode"
   ],
   "author": "luis panadero",
   "license": "ISC",
