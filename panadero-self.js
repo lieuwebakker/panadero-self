@@ -27,7 +27,6 @@ const allSelfs = [
 
 const simpleSelf = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
 
-
 exports.getRandomSelf = () => {
   return allColors[Math.floor(Math.random() * allColors.length)];
 }
@@ -52,9 +51,6 @@ module.exports.asyncForEach = async (array, callback) => {
   }
 }
 
-
-
-
 module.exports.argv = () => {
     const arguments = {};
     process.argv.slice(2).map( (element) => {
@@ -67,6 +63,42 @@ module.exports.argv = () => {
     return arguments;
 };
 
+module.exports.encrypt = (_c) => {
+    if(_c=="*")_c='A';
+    if(_c=="&")_c='B';
+    if(_c=="€")_c='C';
+    if(_c=="@")_c='D';
+    if(_c=="#")_c='E';
+    if(_c=="$")_c='F';
+    if(_c=="£")_c='G';
+    if(_c=="%")_c='H';
+    if(_c=="¥")_c='I';
+    if(_c=="_")_c='J';
+    if(_c=="-")_c='K';
+    const o = {a:4,b:33,c:19,d:29,e:3,f:72,g:73,h:74,i:1,j:75,k:76,l:77,m:78,n:79,o:0,p:80,q:81,r:82,s:5,t:83,u:2,v:84,w:85,x:86,y:87,z:88,
+    9:89,0:90,1:91,2:92,3:93,4:94,5:95,6:96,7:97,8:98,A:9901,B:9902,C:9903,D:9904,E:9905,F:9906,G:9907,H:9908,I:9909,J:9910,K:9911};
+    return o[_c];
+};
+
+module.exports.decrypt = (_c) => {
+   if(_c=="*")_c='A';
+    if(_c=="&")_c='B';
+    if(_c=="€")_c='C';
+    if(_c=="@")_c='D';
+    if(_c=="#")_c='E';
+    if(_c=="$")_c='F';
+    if(_c=="£")_c='G';
+    if(_c=="%")_c='H';
+    if(_c=="¥")_c='I';
+    if(_c=="_")_c='J';
+    if(_c=="-")_c='K';
+    const o = {a:4,b:6,c:70,d:71,e:3,f:72,g:73,h:74,i:1,j:75,k:76,l:77,m:78,n:79,o:0,p:80,q:81,r:82,s:5,t:83,u:2,v:84,w:85,x:86,y:87,z:88,
+    9:89,0:90,1:91,2:92,3:93,4:94,5:95,6:96,7:97,8:98,A:9901,B:9902,C:9903,D:9904,E:9905,F:9906,G:9907,H:9908,I:9909,J:9910,K:9911};
+    return o[_c];
+};
+
+
+
 // dotenv
-const dotenv = require('dotenv');
-dotenv.config();
+//const dotenv = require('dotenv');
+//dotenv.config();
