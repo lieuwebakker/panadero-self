@@ -9,14 +9,14 @@
 // * *  *       *     *      *   *       *  *  * * *
 
 
-class Color {
+class Self {
   constructor(name, code) {
     this.name = name;
     this.code = code;
   }
 }
 
-const allColors = [
+const allSelfs = [
   new Color('brightred', '#E74C3C'),
   new Color('soothingpurple', '#9B59B6'),
   new Color('skyblue', '#5DADE2'),
@@ -25,17 +25,25 @@ const allColors = [
   new Color('groovygray', '#D7DBDD'),
 ];
 
-const simpleColors = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
+const simpleSelf = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
 
 
-exports.getRandomColor = () => {
+exports.getRandomSelf = () => {
   return allColors[Math.floor(Math.random() * allColors.length)];
 }
 
 exports.getSimpleRandom = () => {
-  return simpleColors[Math.floor(Math.random() * simpleColors.length)];
+  return simpleSelf[Math.floor(Math.random() * simpleColors.length)];
 }
 
 
 
-exports.allColors = allColors;
+exports.allColors = allSelfs;
+
+
+
+module.exports = {};
+
+module.exports.camelToSnake = (str) => str.replace(
+    /([A-Z])/g, "_$1"
+).toLowerCase();
