@@ -36,14 +36,37 @@ exports.getSimpleRandom = () => {
   return simpleSelf[Math.floor(Math.random() * simpleColors.length)];
 }
 
-
-
 exports.allColors = allSelfs;
-
-
 
 module.exports = {};
 
 module.exports.camelToSnake = (str) => str.replace(
     /([A-Z])/g, "_$1"
 ).toLowerCase();
+module.exports.waitFor = (ms) => new Promise(r => setTimeout(r, ms));
+module.exports.happyWait= (ms,msg='') => { return new Promise(resolve => { setTimeout(() => { resolve(msg+'🤡'); }, ms);});}
+module.exports.pulseServer = async (a) => { await waitFor(a); }
+module.exports.asyncForEach = async (array, callback) => {
+  for (let index = 0; index < array.length; index++) {
+    await callback(array[index], index, array);
+  }
+}
+
+
+
+
+module.exports.argv = () => {
+    const arguments = {};
+    process.argv.slice(2).map( (element) => {
+        const matches = element.match( '--([a-zA-Z0-9]+)=(.*)');
+        if ( matches ){
+            arguments[matches[1]] = matches[2]
+                .replace(/^['"]/, '').replace(/['"]$/, '');
+        }
+    });
+    return arguments;
+};
+
+// dotenv
+const dotenv = require('dotenv');
+dotenv.config();
