@@ -4,7 +4,7 @@
 // *   Location i5v14-self/build/panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    7 feb 2023              *          *
-// *   Version: v0.9.1.            *        *      *
+// *   Version: v0.9.2.            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
@@ -51,6 +51,10 @@ module.exports.asyncForEach = async (array, callback) => {
   }
 }
 
+
+const getKeyByValue = function (_obj, value) {return Object.keys(_obj).find(key => _obj[key] === value);}
+
+
 module.exports.argv = () => {
     const arguments = {};
     process.argv.slice(2).map( (element) => {
@@ -63,7 +67,10 @@ module.exports.argv = () => {
     return arguments;
 };
 
-module.exports.encrypt = (_c) => {
+ const CODES = {a:4,b:6,c:70,d:71,e:3,f:72,g:73,h:74,i:1,j:75,k:76,l:77,m:78,n:79,o:0,p:80,q:81,r:82,s:5,t:83,u:2,v:84,w:85,x:86,y:87,z:88,
+    9:89,0:90,1:91,2:92,3:93,4:94,5:95,6:96,7:97,8:98,A:9901,B:9902,C:9903,D:9904,E:9905,F:9906,G:9907,H:9908,I:9909,J:9910,K:9911};
+  
+const encrypt = function(_c) {
     if(_c=="*")_c='A';
     if(_c=="&")_c='B';
     if(_c=="€")_c='C';
@@ -75,19 +82,91 @@ module.exports.encrypt = (_c) => {
     if(_c=="¥")_c='I';
     if(_c=="_")_c='J';
     if(_c=="-")_c='K';
-    const o = {a:4,b:6,c:70,d:71,e:3,f:72,g:73,h:74,i:1,j:75,k:76,l:77,m:78,n:79,o:0,p:80,q:81,r:82,s:5,t:83,u:2,v:84,w:85,x:86,y:87,z:88,
-    9:89,0:90,1:91,2:92,3:93,4:94,5:95,6:96,7:97,8:98,A:9901,B:9902,C:9903,D:9904,E:9905,F:9906,G:9907,H:9908,I:9909,J:9910,K:9911};
-    return o[_c];
+    return CODES[_c];
 };
 
-module.exports.decrypt = (_c) => {
-    const o = {a:4,b:6,c:70,d:71,e:3,f:72,g:73,h:74,i:1,j:75,k:76,l:77,m:78,n:79,o:0,p:80,q:81,r:82,s:5,t:83,u:2,v:84,w:85,x:86,y:87,z:88,
-    9:89,0:90,1:91,2:92,3:93,4:94,5:95,6:96,7:97,8:98,A:9901,B:9902,C:9903,D:9904,E:9905,F:9906,G:9907,H:9908,I:9909,J:9910,K:9911};
-    return o[_c];
+const decrypt = function(_c) {
+    if(_c=="A")_c='*';
+    if(_c=="B")_c='&';
+    if(_c=="C")_c='€';
+    if(_c=="D")_c='@';
+    if(_c=="E")_c='#';
+    if(_c=="F")_c='$';
+    if(_c=="G")_c='£';
+    if(_c=="H")_c='%';
+    if(_c=="I")_c='¥';
+    if(_c=="J")_c='_';
+    if(_c=="K")_c='-';
+    return _c;
+};
+
+const codes = function(){
+    return CODES;
 };
 
 
+module.exports.eencrypt = (_nick) => {
+    let f,r,r2,s,v1,v2,e,i;
+    f=1;
+    i = _nick.length;
+    r =[];while(i--)r.push(encrypt(_nick.toLowerCase().charAt(i)));
+    r2=r.reverse()
+    r2.push(999);
+    s = r2.reduce((a,b)=>a+b,0);
+    v1=s.toString().substr(0,2)+f;
+    v2= ('000'+ ('sum',s%1000).toString()).substr(-3);
+    e = v1+r2.toString().replaceAll(',','')+v2;
+    //console.log(e);
 
-// dotenv
-//const dotenv = require('dotenv');
-//dotenv.config();
+    return e;
+};
+
+const validations = function(_eNick) {
+    try {
+        // validations
+        let val1 = _eNick.substr(0,2); 
+        _eNick=_eNick.substr(2);
+        let formule = _eNick.substr(0,1); 
+        _eNick=_eNick.substr(1);
+        let val2 = e.substr(-3); 
+        _eNick=_eNick.substr(0,_eNick.length-3)
+
+        console.log('formule', formule)
+        console.log('validation 1:', val1)
+        console.log('validation 2:', val2)
+    } catch(err){
+        console.log(err);
+    }
+}
+
+module.exports.decrypt = (_eNick) => {
+    let i=3;
+    let decrypted='';
+    while (i<_eNick.length) {
+        // 1 chars
+        if('0123456'.includes(_eNick[i])){
+            decrypted+=(getKeyByValue(codes(),parseInt(_eNick[i])));
+            i++; 
+            continue;
+        } 
+        // 2 chars
+        if(parseInt(_eNick.substr(i,2))>69 && parseInt(_eNick.substr(i,2))<99) {
+            decrypted+=(getKeyByValue(codes(),parseInt(_eNick.substr(i,2))));
+            i+=2;
+            continue;
+        } 
+        // 3 end ?
+        if(_eNick.substr(i,3)=='999') {i=_eNick.length; break;} 
+        // 4 chars
+        let c4 = parseInt(_eNick.substr(i,4));
+        if(c4>9900 && c4<9912) {
+        let d=decrypt((getKeyByValue(codes(),c4)));
+        decrypted+=d;
+            i+=4;
+            continue;
+        } 
+        i++;
+    }
+    let response = {eNick:_eNick,decrypted:decrypted,validate1:"ok", validate2:"notOk"}
+    return (response);
+};
