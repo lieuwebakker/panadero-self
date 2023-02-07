@@ -17,12 +17,12 @@ class Self {
 }
 
 const allSelfs = [
-  new Color('brightred', '#E74C3C'),
-  new Color('soothingpurple', '#9B59B6'),
-  new Color('skyblue', '#5DADE2'),
-  new Color('leafygreen', '#48C9B0'),
-  new Color('sunkissedyellow', '#F4D03F'),
-  new Color('groovygray', '#D7DBDD'),
+  new Self('brightred', '#E74C3C'),
+  new Self('soothingpurple', '#9B59B6'),
+  new Self('skyblue', '#5DADE2'),
+  new Self('leafygreen', '#48C9B0'),
+  new Self('sunkissedyellow', '#F4D03F'),
+  new Self('groovygray', '#D7DBDD'),
 ];
 
 const simpleSelf = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
