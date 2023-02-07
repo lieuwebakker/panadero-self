@@ -1,10 +1,10 @@
 // * * *     *       *   *       *   *   *   * *** *
 // *    *       *     *      *   *       *   *     *
 // *   API : panadero-colors.js      * *           * 
-// *   Location i5v0/build/panadero-colors       * * 
+// *   Location i5v14-self/build/panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    17 jun 2022             *          *
-// *   Version: v1.0.1.            *        *      *
+// *   Date:    7 feb 2023              *          *
+// *   Version: v0.9.0.            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
