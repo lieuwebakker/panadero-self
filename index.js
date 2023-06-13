@@ -1,3 +1,3 @@
     const Self = require("./panadero-self");
 
-    export defaullt Self;
+    export default Self;
