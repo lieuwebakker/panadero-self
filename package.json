@@ -1,6 +1,6 @@
 {
   "name": "panadero-self",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "test module for self",
   "main": "panadero-self.js",
   "scripts": {

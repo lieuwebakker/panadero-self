@@ -4,7 +4,7 @@
 // *   Location i5v14-self/build/panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    13 jun 2023              *          *
-// *   Version: v0.9.3.            *        *      *
+// *   Version: v0.9.4.            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
@@ -43,9 +43,10 @@ class Self {
             ];
     }
 }
-let moduleName = "whatever-Panadero-self6";
+let moduleName = "Panadero-SELF_0_2";
+let moduleGit = "https://github.com/lieuwebakker/panadero-self";
 
-export { Self, moduleName };
+export { Self, moduleName, moduleGit };
 
 
 /*
