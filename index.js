@@ -1,3 +1,3 @@
     const Self = require("./panadero-self");
 
-    module.exports = Self;
+    export defaullt Self;

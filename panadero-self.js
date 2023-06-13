@@ -1,32 +1,50 @@
 // * * *     *       *   *       *   *   *   * *** *
 // *    *       *     *      *   *       *   *     *
-// *   API : panadero-colors.js      * *           * 
+// *   API : panadero-self.js      * *           * 
 // *   Location i5v14-self/build/panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    7 feb 2023              *          *
-// *   Version: v0.9.2.            *        *      *
+// *   Date:    13 jun 2023              *          *
+// *   Version: v0.9.3.            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
 
 class Self {
-  constructor(name, code) {
-    this.name = name;
-    this.code = code;
-  }
+    constructor(_code) {
+    this.code = _code;
+    this.name = 'panadero-self.js';
+    this.version = 'v0.9.3'
+    this.colors = [];
+    this.simpleColors = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
+    }
+
+    async getName() {
+        var that = this;
+        return that.name;
+    }
+
+    async getColors() {
+        var that = this;
+        return that.colors;
+    }
+
+    async setColors() {
+        var that = this;
+        this.colors= [ 
+            {'name':'brightred', "code":'#E74C3C'},
+            {'name':'soothingpurple', "code":'#9B59B6'},
+            {'name':'skyblue', "code":'#5DADE2'},
+            {'name':'leafygreen', "code":'#48C9B0'},
+            {'name':'sunkissedyellow', "code":'#F4D03F'},
+            {'name':'groovygray', "code":'#D7DBDD'}
+            ];
+    }
 }
 
-const allSelfs = [
-  new Self('brightred', '#E74C3C'),
-  new Self('soothingpurple', '#9B59B6'),
-  new Self('skyblue', '#5DADE2'),
-  new Self('leafygreen', '#48C9B0'),
-  new Self('sunkissedyellow', '#F4D03F'),
-  new Self('groovygray', '#D7DBDD'),
-];
+export default Self;
 
-const simpleSelf = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
 
+/*
 exports.getRandomSelf = () => {
   return allColors[Math.floor(Math.random() * allColors.length)];
 }
@@ -170,3 +188,4 @@ module.exports.decrypt = (_eNick) => {
     let response = {eNick:_eNick,decrypted:decrypted,validate1:"ok", validate2:"notOk"}
     return (response);
 };
+*/
