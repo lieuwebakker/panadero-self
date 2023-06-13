@@ -8,6 +8,9 @@
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
+//const Moralis = require("moralis").default;
+//const { EvmChain } = require("@moralisweb3/common-evm-utils");
+
 
 class Self {
     constructor(_code) {
@@ -40,8 +43,9 @@ class Self {
             ];
     }
 }
+let moduleName = "whatever-Panadero-self6";
 
-export default Self;
+export { Self, moduleName };
 
 
 /*
