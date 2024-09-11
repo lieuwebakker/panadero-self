@@ -11,12 +11,14 @@
 //const Moralis = require("moralis").default;
 //const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
+const moduleName = "Panadero-SELF";
+const moduleGit = "https://github.com/lieuwebakker/panadero-self";
+const version = "0.9.4";
 
 class Self {
     constructor(_code) {
     this.code = _code;
     this.name = 'panadero-self.js';
-    this.version = 'v0.9.3'
     this.colors = [];
     this.simpleColors = ['red','grey','white','yellow','magenta','green','blue','cyan','purple','teal'];
     }
@@ -43,8 +45,6 @@ class Self {
             ];
     }
 }
-let moduleName = "Panadero-SELF_0_2";
-let moduleGit = "https://github.com/lieuwebakker/panadero-self";
 
 export { Self, moduleName, moduleGit };
 

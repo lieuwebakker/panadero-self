@@ -1,4 +1,5 @@
 {
+  "author": "JaWsome Orbit<jawsome.orbit@gmail.com>",
   "name": "panadero-self",
   "version": "0.9.4",
   "description": "test module for self",
@@ -20,7 +21,7 @@
     "encode",
     "decode"
   ],
-  "author": "luis panadero, jawsome.orbit",
+  "contributors": "luis.panadero, jawsome.orbit",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lieuwebakker/panadero-self/issues"
