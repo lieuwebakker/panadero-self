@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    13 sep 2024              *          *
-// *   Version: v0.9.42.            *        *      *
+// *   Date:    14 sep 2024              *          *
+// *   Version: v0.9.43            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
@@ -68,9 +68,15 @@ async function rc( _c, _a, _f, _p=[]) {
 
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
 
+async function resolveAllNames(_n) {
+    let _wallet = await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]);
+    let _moreNames =( await rc(c,abi,"getNames",[_wallet]));
+    return _moreNames;
+}
 
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName };
+
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames };
 
 /*
 exports.getRandomSelf = () => {
