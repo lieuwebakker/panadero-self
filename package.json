@@ -1,7 +1,7 @@
 {
   "author": "JaWsome Orbit<jawsome.orbit@gmail.com>",
   "name": "panadero-self",
-  "version": "0.9.42",
+  "version": "0.9.43",
   "description": "test module for self",
   "main": "panadero-self.js",
   "scripts": {
