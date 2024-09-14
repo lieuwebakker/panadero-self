@@ -4,14 +4,16 @@
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    14 sep 2024              *          *
-// *   Version: v0.9.43            *        *      *
+// *   Version: v0.9.44            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
 //const Moralis = require("moralis").default;
 //const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
-import { ethers, keccak256, toUtf8Bytes  } from "ethers";
+import { ethers, keccak256, toUtf8Bytes } from "ethers";
+import TelegramBot from 'node-telegram-bot-api';
+
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
@@ -74,9 +76,13 @@ async function resolveAllNames(_n) {
     return _moreNames;
 }
 
+async function testTg(_msg, _tgToken, _tgGroup) {
+    const options = { webHook: { port: 443 }};
+    const tg = new TelegramBot(_tgToken, options);
+    await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
+}
 
-
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, testTg };
 
 /*
 exports.getRandomSelf = () => {
