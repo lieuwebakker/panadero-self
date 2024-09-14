@@ -17,7 +17,7 @@ import TelegramBot from 'node-telegram-bot-api';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.42";
+const moduleVersion = "0.9.44";
 
 class Self {
     constructor(_code) {
