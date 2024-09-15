@@ -12,8 +12,7 @@
 //const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
-import TelegramBot from 'node-telegram-bot-api';
-
+//import TelegramBot from 'node-telegram-bot-api';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
@@ -78,8 +77,8 @@ async function resolveAllNames(_n) {
 
 async function testTg(_msg, _tgToken, _tgGroup) {
     const options = { webHook: { port: 443 }};
-    const tg = new TelegramBot(_tgToken, options);
-    await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
+   // const tg = new TelegramBot(_tgToken, options);
+    //await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
 }
 
 export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, testTg };
