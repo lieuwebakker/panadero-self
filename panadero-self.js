@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    14 sep 2024              *          *
-// *   Version: v0.9.45            *        *      *
+// *   Date:    19 sep 2024              *          *
+// *   Version: v0.9.46            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
@@ -16,7 +16,7 @@ import { ethers, keccak256, toUtf8Bytes } from "ethers";
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.45";
+const moduleVersion = "0.9.46";
 
 class Self {
     constructor(_code) {
@@ -81,7 +81,7 @@ async function resolveAllNames(_n) {
     //await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
 //}
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, testTg };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames };
 
 /*
 exports.getRandomSelf = () => {
