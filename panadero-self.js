@@ -75,11 +75,11 @@ async function resolveAllNames(_n) {
     return _moreNames;
 }
 
-async function testTg(_msg, _tgToken, _tgGroup) {
-    const options = { webHook: { port: 443 }};
+//async function testTg(_msg, _tgToken, _tgGroup) {
+//    const options = { webHook: { port: 443 }};
    // const tg = new TelegramBot(_tgToken, options);
     //await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
-}
+//}
 
 export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, testTg };
 

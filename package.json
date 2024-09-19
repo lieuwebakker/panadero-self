@@ -2,7 +2,7 @@
   "author": "JaWsome Orbit<jawsome.orbit@gmail.com>",
   "name": "panadero-self",
   "type": "module",
-  "version": "0.9.43",
+  "version": "0.9.45",
   "description": "test module for self",
   "main": "panadero-self.js",
   "scripts": {
@@ -24,6 +24,11 @@
   ],
   "contributors": "luis.panadero, jawsome.orbit",
   "license": "ISC",
+  "description": "basic contracts package for panadero <> self applications",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2"
+  },
   "bugs": {
     "url": "https://github.com/lieuwebakker/panadero-self/issues"
   },
