@@ -4,7 +4,7 @@
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    14 sep 2024              *          *
-// *   Version: v0.9.44            *        *      *
+// *   Version: v0.9.45            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
@@ -16,7 +16,7 @@ import { ethers, keccak256, toUtf8Bytes } from "ethers";
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.44";
+const moduleVersion = "0.9.45";
 
 class Self {
     constructor(_code) {
