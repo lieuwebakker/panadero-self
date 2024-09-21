@@ -81,7 +81,7 @@ async function resolveAllNames(_n) {
     //await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
 //}
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, testTg };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames };
 
 /*
 exports.getRandomSelf = () => {
