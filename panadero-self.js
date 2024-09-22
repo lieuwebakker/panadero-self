@@ -76,7 +76,7 @@ async function rc( _c, _a, _f, _p=[]) {
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
 async function totalSupply(_c) {
 
-console.log('totalSupply', 'e2';
+console.log('totalSupply', 'e2');
 
     return( await rc(_c.address,_c.abi,"totalSupply"));}
 ;
