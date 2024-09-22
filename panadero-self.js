@@ -3,19 +3,20 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    20 sep 2024              *          *
-// *   Version: v0.9.48            *        *      *
+// *   Date:    22 sep 2024              *         *
+// *   Version: v0.9.49            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
 //  change 0.9.48 : add contract parameters totalSupply(_contract)
+//  change 0.9.49 : added burner.json to package
 //
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.48";
+const moduleVersion = "0.9.49";
 
 class Self {
     constructor(_code) {
