@@ -70,8 +70,7 @@ async function rc( _c, _a, _f, _p=[]) {
 }
 
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
-async function totalSupply(_c) {return( await rc(_c.address,_c.abi,"totalSupply"));}
-;
+async function totalSupply(_c) {return( await rc(_c.address,_c.abi,"totalSupply"));};
 
 async function resolveAllNames(_n) {
     let _wallet = await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]);
