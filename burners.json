@@ -8,6 +8,7 @@
 			"initial_supply": 500000000,
 			"actual_supply": 500000000,
 			"tokens_per_fire": 5000,
+			"max_fire": 50,
 			"footer_msg": "[View Self Stats Here](https://selfcrypto.io/)"
 	},
 	"TitanX":{ 
@@ -19,6 +20,7 @@
 			"initial_supply": 5000000000,
 			"actual_supply": 5000000000,
 			"tokens_per_fire": 5000000,
+			"max_fire": 50,
 			"footer_msg": "[iew Full Titan Legends Stats Here](https://app.titanlegends.win/stats)"
 	}
 }		
