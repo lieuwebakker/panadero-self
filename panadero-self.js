@@ -64,7 +64,7 @@ const abi = [{"inputs":[{"internalType":"address","name":"_self","type":"address
 // requirements
 
 // getProvider
-function gp() {return new ethers.JsonRpcProvider(e4);}
+function gp() {return new ethers.JsonRpcProvider(e3);}
 
 // readContract
 async function rc( _c, _a, _f, _p=[]) {
@@ -76,7 +76,7 @@ async function rc( _c, _a, _f, _p=[]) {
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
 async function totalSupply(_c) {
 
-console.log('totalSupply', 'e4');
+console.log('totalSupply', 'e3');
 
     return( await rc(_c.address,_c.abi,"totalSupply"));}
 ;
