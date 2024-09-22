@@ -77,6 +77,7 @@ async function rc( _c, _a, _f, _p=[]) {
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
 
 async function totalSupply(_c, _e="" ) {
+    // overrule endpoint
     if (_c.network==="eth") e = _e;
     return( await rc(_c.address,_c.abi,"totalSupply"));
 }
