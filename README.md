@@ -10,17 +10,26 @@ please [contact me](mailto:github@ricmoo.com).
 
 | Version | Supported                                  | Initial Release   |
 | ------- | ------------------------------------------ | ----------------- |
+| 0.9.51  | :white_check_mark:                         | 2024-09-14        |
 | 0.9.43  | :white_check_mark:                         | 2024-09-14        |
 | 0.9.42  | :white_check_mark:                         | 2024-09-13        |
 | 0.9.x   | :white_check_mark:                         | 2023-02-02        |
 | 0.1.x   | :x:                                        | 2023-02-14        |
 | 0.0.x   | :x:                                        | 2023-01-29        |
 
-
-
 ## Versioning
 0.9.42 	+ resolveName
 0.9.43 	+ resolveAllNames
+0.9.44	+ vue3 / node.js conversion
+0.9.45 	+ vue3 / node.js conversion
+0.9.46	+ vue3 / node.js conversion
+0.9.47 : add totalSupply
+0.9.48 : add contract parameters totalSupply(_contract)
+0.9.49 : added burner.json to package
+0.9.50 : import endPoints from .env
+0.9.51 : recover import.meta.env
+//      If  using Vite, use import.meta.env instead, process.env is removed.
+//      And make sure variables start with VITE_ in .env file.
 
 ## Reporting a Vulnerability
 
