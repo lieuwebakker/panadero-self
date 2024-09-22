@@ -65,7 +65,7 @@ const abi = [{"inputs":[{"internalType":"address","name":"_self","type":"address
 // requirements
 
 // getProvider
-function gp() {return new ethers.JsonRpcProvider(e3h);}
+function gp() {return new ethers.JsonRpcProvider(e3);}
 
 // readContract
 async function rc( _c, _a, _f, _p=[]) {
