@@ -4,20 +4,18 @@
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    20 sep 2024              *          *
-// *   Version: v0.9.47            *        *      *
+// *   Version: v0.9.48            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
+//  change 0.9.48 : add contract parameters totalSupply(_contract)
 //
-//const Moralis = require("moralis").default;
-//const { EvmChain } = require("@moralisweb3/common-evm-utils");
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
-//import TelegramBot from 'node-telegram-bot-api';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.47";
+const moduleVersion = "0.9.48";
 
 class Self {
     constructor(_code) {
@@ -71,7 +69,8 @@ async function rc( _c, _a, _f, _p=[]) {
 }
 
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
-async function totalSupply() {return( await rc(c2,[{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}],"totalSupply",[]))};
+async function totalSupply(_c) {return( await rc(_c.address, _c.abi));}
+;
 
 async function resolveAllNames(_n) {
     let _wallet = await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]);
