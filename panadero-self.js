@@ -52,6 +52,7 @@ class Self {
 // endpoint abi contract
 const e = "https://bsc-dataseed1.binance.org/";
 const e2 = "https://eth-mainnet.g.alchemy.com/v2/K10r5ten8iyCF48DTool-1OsG7Vl_Wvg";
+const e3 = "wss://ethereum-mainnet.core.chainstack.com/ws/745eef2f4586d599f320d64f810b2d64";
 
 
 const a = [{"inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],"name": "ownerOf","outputs": [{ "internalType": "address", "name": "", "type": "address" }],"stateMutability": "view","type": "function"}];
@@ -75,7 +76,7 @@ async function rc( _c, _a, _f, _p=[]) {
 async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]));}
 async function totalSupply(_c) {
 
-console.log('totalSupply','e');
+console.log('totalSupply');
 
     return( await rc(_c.address,_c.abi,"totalSupply"));}
 ;
