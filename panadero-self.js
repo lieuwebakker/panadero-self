@@ -4,7 +4,7 @@
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    23 sep 2024              *         *
-// *   Version: v0.9.52            *        *      *
+// *   Version: v0.9.53            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -15,13 +15,14 @@
 //      If  using Vite, use import.meta.env instead, process.env is removed.
 //      And make sure variables start with VITE_ in .env file.
 //  change 0.9.52 : fix endpoint madness network eth or bsc [_network]
+//  change 0.9.53 : changed _network for object
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.52";
+const moduleVersion = "0.9.53";
 
 class Self {
     constructor(_code) {
@@ -81,7 +82,7 @@ async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUt
 
 async function totalSupply(_c, _e="" ) {
     // overrule endpoint
-    //if (_c.network==="eth") e = _e;
+    _network = _c.network;
     console.log("panadero-self.totalSupply");
     return( await rc(_c.address,_c.abi,"totalSupply"));
 }
