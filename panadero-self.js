@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    22 sep 2024              *         *
-// *   Version: v0.9.51            *        *      *
+// *   Date:    23 sep 2024              *         *
+// *   Version: v0.9.52            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -14,13 +14,14 @@
 //  change 0.9.51 : recover import.meta.env
 //      If  using Vite, use import.meta.env instead, process.env is removed.
 //      And make sure variables start with VITE_ in .env file.
+//  change 0.9.52 : fix endpoint madness network eth or bsc [_network]
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.51";
+const moduleVersion = "0.9.52";
 
 class Self {
     constructor(_code) {
@@ -54,8 +55,10 @@ class Self {
 }
 
 // endpoint abi contract // default bsc
-let e = "https://bsc-dataseed1.binance.org/";
+let e = {"bsc":"https://bsc-dataseed1.binance.org/", "eth":"https://ethereum-mainnet.core.chainstack.com/745eef2f4586d599f320d64f810b2d64"};
 
+
+let _network="bsc";
 const a = [{"inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],"name": "ownerOf","outputs": [{ "internalType": "address", "name": "", "type": "address" }],"stateMutability": "view","type": "function"}];
 const c = "0x125Bb13F77f3565d421bD22e92aaFfC795D97a72"; // SelfNft v2.2.4
 const c2 = "0x50c34995a273075a80c23625F69F40d56CE414DE"; // Self
@@ -65,7 +68,7 @@ const abi = [{"inputs":[{"internalType":"address","name":"_self","type":"address
 // requirements
 
 // getProvider
-function gp() {return new ethers.JsonRpcProvider(e);}
+function gp() {return new ethers.JsonRpcProvider(e[_network]);}
 
 // readContract
 async function rc( _c, _a, _f, _p=[]) {
@@ -78,7 +81,8 @@ async function resolveName(_n) {return( await rc(c,abi,"ownerOf",[keccak256(toUt
 
 async function totalSupply(_c, _e="" ) {
     // overrule endpoint
-    if (_c.network==="eth") e = _e;
+    //if (_c.network==="eth") e = _e;
+    console.log("panadero-self.totalSupply");
     return( await rc(_c.address,_c.abi,"totalSupply"));
 }
 
