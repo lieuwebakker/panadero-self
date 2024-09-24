@@ -35,7 +35,7 @@ please [contact me](mailto:github@ricmoo.com).
 //  change 0.9.53 : changed _network for object
 //  change 0.9.54 : retrieve endPoint from .env for totalSupply
 //  change 0.9.55 : repair 'network="bsc" for native calls
-//  change 0.9.56 : included checkΔSupply()
+//  change 0.9.56 : included checkSupplyDelta()
 ## Reporting a Vulnerability
 
 If you identify a security vulnerability with this library (or any dependency),

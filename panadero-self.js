@@ -18,7 +18,7 @@
 //  change 0.9.53 : changed _network for object
 //  change 0.9.54 : retrieve endPoint from .env for totalSupply
 //  change 0.9.55 : repair 'network="bsc" for native calls
-//  change 0.9.56 : included checkΔSupply()
+//  change 0.9.56 : included checkSupplyDelta()
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
@@ -101,9 +101,8 @@ async function resolveAllNames(_n) {
     return _moreNames;
 }
 
-
 // burnServer.vue
-const checkΔSupply = async (_burner, _decimals=1e18) => {
+const checkSupplyDelta = async (_burner, _decimals=1e18) => {
     return new Promise( async (resolve, reject) => {
       try {
         let _nSupply = Number(_bigIntTotalSupply)/_decimals;
