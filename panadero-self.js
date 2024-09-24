@@ -151,7 +151,7 @@ ${_burnMsg}
 
 ${_burner.footer_msg}
 `;
-
+            resolve(_msg);
         } catch (err) {
             console.log(err);
             resolve(0);
