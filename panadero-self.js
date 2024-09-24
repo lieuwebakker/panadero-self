@@ -4,7 +4,7 @@
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    24 sep 2024              *         *
-// *   Version: v0.9.56            *        *      *
+// *   Version: v0.9.57            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -19,9 +19,11 @@
 //  change 0.9.54 : retrieve endPoint from .env for totalSupply
 //  change 0.9.55 : repair 'network="bsc" for native calls
 //  change 0.9.56 : included checkSupplyDelta()
+//  change 0.9.57 : included createBurnMsg()
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
+import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
@@ -102,30 +104,66 @@ async function resolveAllNames(_n) {
 }
 
 // burnServer.vue
-async function checkSupplyDelta (_burner, _decimals=1e18){
+async function checkSupplyDelta(_burner, _decimals=1e18) {
     return new Promise( async (resolve, reject) => {
-      try {
-        let _bigIntTotalSupply = await totalSupply(_burner);
-        let _nSupply = Number(_bigIntTotalSupply)/_decimals;
-        let _burned = _burner.actual_supply - _nSupply;
-        resolve({
-            "burned":_burned,
-            "supply":_nSupply
-        });
-      } catch (err) {
-        console.log(err);
-        resolve(0);
+        try {
+            let _bigIntTotalSupply = await totalSupply(_burner);
+            let _nSupply = Number(_bigIntTotalSupply)/_decimals;
+            let _burned = _burner.actual_supply - _nSupply;
+            resolve({
+                "burned":_burned,
+                "supply":_nSupply
+            });
+        } catch (err) {
+            console.log(err);
+            resolve(0);
       }
     });
+}
+
+// helpers for createBurnMsg 
+const NR_FORMAT = 'en-US';
+let nf = new Intl.NumberFormat(NR_FORMAT);
+
+// burnServer.vue
+async function createBurnMsg(_burner, _supply, _burned) {
+    return new Promise( async (resolve, reject) => {
+        try {
+
+            let _quotient = Math.floor(_burned / _burner.tokens_per_fire);
+            if (_quotient > _burner.max_fire)_quotient = _burner.max_fire;
+            _quotient= _burner.max_fire;
+
+            let _oPrice = await axios.get(`https://api.geckoterminal.com/api/v2/simple/networks/${_burner.network}/token_price/${_burner.address}`);
+            let _price = parseFloat(_oPrice.data.data.attributes.token_prices[_burner.address.toLowerCase()]); 
+
+            let _burnedUsd = (parseFloat(_burned)*parseFloat(_price)).toFixed(2);
+            let _burnedPerc =  (((_burner.initial_supply - _supply)/_burner.initial_supply) * 100).toFixed(2);
+
+            const _burnMsg= `🔥` + '🔥'.repeat(_quotient);
+            const _msg =` NEW *$${_burner.symbol}* BURN !!
+
+${_burnMsg}
+
+*Quantity Burned:* : ${nf.format(_burned)} ($ ${_burnedUsd})
+*New Total Supply* : ${nf.format(_supply)}
+*Total % Burned* : ${_burnedPerc}%
+
+${_burner.footer_msg}
+`;
+
+        } catch (err) {
+            console.log(err);
+            resolve(0);
+        }
+    }); 
 }
 
 
 
 
 
-
-
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, createBurnMsg };
 
 /*
 exports.getRandomSelf = () => {
