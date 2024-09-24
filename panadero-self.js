@@ -102,7 +102,7 @@ async function resolveAllNames(_n) {
 }
 
 // burnServer.vue
-const function checkSupplyDelta = async (_burner, _decimals=1e18) => {
+async function checkSupplyDelta (_burner, _decimals=1e18){
     return new Promise( async (resolve, reject) => {
       try {
         let _nSupply = Number(_bigIntTotalSupply)/_decimals;
