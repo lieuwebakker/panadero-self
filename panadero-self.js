@@ -108,7 +108,10 @@ async function checkSupplyDelta (_burner, _decimals=1e18){
         let _bigIntTotalSupply = await totalSupply(_burner);
         let _nSupply = Number(_bigIntTotalSupply)/_decimals;
         let _burned = _burner.actual_supply - _nSupply;
-        resolve(_burned);
+        resolve({
+            "burned":_burned,
+            "supply":_nSupply
+        });
       } catch (err) {
         console.log(err);
         resolve(0);
