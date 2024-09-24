@@ -104,9 +104,8 @@ async function resolveAllNames(_n) {
 
 // burnServer.vue
 const checkΔSupply = async (_burner, _decimals=1e18) => {
-    return new Promise((resolve, reject) => {
+    return new Promise( async (resolve, reject) => {
       try {
-        let _bigIntTotalSupply = await totalSupply(_burner);
         let _nSupply = Number(_bigIntTotalSupply)/_decimals;
         let _burned = _burner.actual_supply - _nSupply;
         resolve(_burned);
