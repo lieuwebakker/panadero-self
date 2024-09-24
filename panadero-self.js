@@ -27,7 +27,7 @@ import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.56";
+const moduleVersion = "0.9.57";
 
 class Self {
     constructor(_code) {
