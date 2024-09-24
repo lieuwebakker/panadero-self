@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    23 sep 2024              *         *
-// *   Version: v0.9.55            *        *      *
+// *   Date:    24 sep 2024              *         *
+// *   Version: v0.9.56            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -18,13 +18,14 @@
 //  change 0.9.53 : changed _network for object
 //  change 0.9.54 : retrieve endPoint from .env for totalSupply
 //  change 0.9.55 : repair 'network="bsc" for native calls
+//  change 0.9.56 : included checkΔSupply()
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.55";
+const moduleVersion = "0.9.56";
 
 class Self {
     constructor(_code) {
@@ -100,13 +101,29 @@ async function resolveAllNames(_n) {
     return _moreNames;
 }
 
-//async function testTg(_msg, _tgToken, _tgGroup) {
-//    const options = { webHook: { port: 443 }};
-   // const tg = new TelegramBot(_tgToken, options);
-    //await tg.sendMessage(_tgGroup,`Test msg ${_msg}`, {parse_mode: 'HTML'});
-//}
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply };
+// burnServer.vue
+const checkΔSupply = async (_burner, _decimals=1e18) => {
+    return new Promise((resolve, reject) => {
+      try {
+        let _bigIntTotalSupply = await totalSupply(_burner);
+        let _nSupply = Number(_bigIntTotalSupply)/_decimals;
+        let _burned = _burner.actual_supply - _nSupply;
+        resolve(_burned);
+      } catch (err) {
+        console.log(err);
+        resolve(0);
+      }
+    });
+}
+
+
+
+
+
+
+
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkΔSupply };
 
 /*
 exports.getRandomSelf = () => {
