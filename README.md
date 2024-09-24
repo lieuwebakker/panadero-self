@@ -36,7 +36,7 @@ please [contact me](mailto:github@ricmoo.com).
 //  change 0.9.54 : retrieve endPoint from .env for totalSupply
 //  change 0.9.55 : repair 'network="bsc" for native calls
 //  change 0.9.56 : included checkSupplyDelta()
-//  change 0.9.57 : included createBurnMsg()
+//  change 0.9.57 : included createBurnMsg(), idleMsg()
 ## Reporting a Vulnerability
 
 If you identify a security vulnerability with this library (or any dependency),

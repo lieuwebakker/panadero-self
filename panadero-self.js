@@ -19,7 +19,7 @@
 //  change 0.9.54 : retrieve endPoint from .env for totalSupply
 //  change 0.9.55 : repair 'network="bsc" for native calls
 //  change 0.9.56 : included checkSupplyDelta()
-//  change 0.9.57 : included createBurnMsg()
+//  change 0.9.57 : included createBurnMsg(), idleMsg()
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
@@ -160,10 +160,31 @@ ${_burner.footer_msg}
 }
 
 
+// burnServer.vue
+async function idleMsg(_input) {
+    return new Promise( async (resolve, reject) => {
+        try {
+            let _msg = _input.replace("🔥","💧")
+                            .replace("💧🔥","🔥💧")
+                            .replace("💧💧💧💧💧","🔥🔥🔥🔥🔥")
+                            .replace(".......................................","💥")
+                            .replace("💥💥💥💥💥💥💥💥💥💥","🌈")+'.';
+            resolve(_msg);
+        } catch (err) {
+            console.log(err);
+            resolve(0);
+        }
+    }); 
+}
 
 
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, createBurnMsg };
+
+
+
+
+
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, createBurnMsg, idleMsg };
 
 /*
 exports.getRandomSelf = () => {
