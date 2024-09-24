@@ -121,7 +121,7 @@ const checkSupplyDelta = async (_burner, _decimals=1e18) => {
 
 
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkΔSupply };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta };
 
 /*
 exports.getRandomSelf = () => {
