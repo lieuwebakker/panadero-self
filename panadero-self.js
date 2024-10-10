@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    24 sep 2024              *         *
-// *   Version: v0.9.57            *        *      *
+// *   Date:    27 sep 2024              *         *
+// *   Version: v0.9.58            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -20,6 +20,7 @@
 //  change 0.9.55 : repair 'network="bsc" for native calls
 //  change 0.9.56 : included checkSupplyDelta()
 //  change 0.9.57 : included createBurnMsg(), idleMsg()
+//  change 0.9.58 : remove 134 //_quotient= _burner.max_fire;
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 import {} from "dotenv";
@@ -27,7 +28,7 @@ import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.57";
+const moduleVersion = "0.9.58";
 
 class Self {
     constructor(_code) {
@@ -62,7 +63,6 @@ class Self {
 
 // endpoint abi contract // default bsc
 let e = {"bsc":"https://bsc-dataseed1.binance.org/", "eth":""};
-
 
 let _network="bsc";
 const a = [{"inputs": [{ "internalType": "uint256", "name": "tokenId", "type": "uint256" }],"name": "ownerOf","outputs": [{ "internalType": "address", "name": "", "type": "address" }],"stateMutability": "view","type": "function"}];
@@ -130,7 +130,7 @@ async function createBurnMsg(_burner, _supply, _burned) {
 
             let _quotient = Math.floor(_burned / _burner.tokens_per_fire);
             if (_quotient > _burner.max_fire)_quotient = _burner.max_fire;
-            _quotient= _burner.max_fire;
+            //_quotient= _burner.max_fire;
 
             let _oPrice = await axios.get(`https://api.geckoterminal.com/api/v2/simple/networks/${_burner.network}/token_price/${_burner.address}`);
             let _price = parseFloat(_oPrice.data.data.attributes.token_prices[_burner.address.toLowerCase()]); 
