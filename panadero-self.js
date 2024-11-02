@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    27 sep 2024              *         *
-// *   Version: v0.9.58            *        *      *
+// *   Date:    02 nov 2024              *         *
+// *   Version: v0.9.59            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -21,9 +21,10 @@
 //  change 0.9.56 : included checkSupplyDelta()
 //  change 0.9.57 : included createBurnMsg(), idleMsg()
 //  change 0.9.58 : remove 134 //_quotient= _burner.max_fire;
+//  change 0.9.59 : remove dotenv;
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
-import {} from "dotenv";
+//import {} from "dotenv";
 import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
