@@ -4,7 +4,7 @@
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
 // *   Date:    23 nov 2024              *         *
-// *   Version: v0.9.59            *        *      *
+// *   Version: v0.9.60            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -31,7 +31,7 @@ import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.59";
+const moduleVersion = "0.9.60";
 
 class Self {
     constructor(_code) {
