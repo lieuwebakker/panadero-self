@@ -138,7 +138,7 @@ async function checkBalance(_burner, _address, _decimals=1e18 ) {
             let _bigIntBalance = await balanceOf(_burner, _address);
             let _balance = Number(_bigIntBalance)/_decimals;
             resolve(
-                balance
+                _balance
             );
         } catch (err) {
             console.log(err);
