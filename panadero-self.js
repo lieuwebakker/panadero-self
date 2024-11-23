@@ -3,7 +3,7 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    02 nov 2024              *         *
+// *   Date:    23 nov 2024              *         *
 // *   Version: v0.9.59            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
@@ -22,6 +22,8 @@
 //  change 0.9.57 : included createBurnMsg(), idleMsg()
 //  change 0.9.58 : remove 134 //_quotient= _burner.max_fire;
 //  change 0.9.59 : remove dotenv;
+//  change 0.9.60 : add balanceOf
+
 
 import { ethers, keccak256, toUtf8Bytes } from "ethers";
 //import {} from "dotenv";
@@ -29,7 +31,7 @@ import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.58";
+const moduleVersion = "0.9.59";
 
 class Self {
     constructor(_code) {
@@ -97,6 +99,14 @@ async function totalSupply(_c) {
     return( await rc(_c.address,_c.abi,"totalSupply"));
 }
 
+async function balanceOf(_c, _a) {
+    // overrule endpoint
+    _network = _c.network;
+    e[_network] = _c.endPoint; 
+    return( await rc(_c.address,_c.abi,"balanceOf",[_a]));
+}
+
+
 async function resolveAllNames(_n) {
     _network="bsc";
     let _wallet = await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]);
@@ -115,6 +125,21 @@ async function checkSupplyDelta(_burner, _decimals=1e18) {
                 "burned":_burned,
                 "supply":_nSupply
             });
+        } catch (err) {
+            console.log(err);
+            resolve(0);
+      }
+    });
+}
+
+async function checkBalance(_burner, _address, _decimals=1e18 ) {
+    return new Promise( async (resolve, reject) => {
+        try {
+            let _bigIntBalance = await balanceOf(_burner, _address);
+            let _balance = Number(_bigIntBalance)/_decimals;
+            resolve(
+                balance
+            );
         } catch (err) {
             console.log(err);
             resolve(0);
@@ -157,6 +182,12 @@ ${_burner.footer_msg}
         }
     }); 
 }
+/*
+Quantity Burned: 89,638 ($637.79)
+Circulating Supply : 896,410,729
+Total % Burned : 10.03%
+*/
+
 
 // burnServer.vue
 async function idleMsg(_input) {
