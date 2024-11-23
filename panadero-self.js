@@ -206,5 +206,5 @@ async function idleMsg(_input) {
     }); 
 }
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, createBurnMsg, idleMsg };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, checkBalance, createBurnMsg, idleMsg };
 
