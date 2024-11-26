@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    23 nov 2024              *         *
-// *   Version: v0.9.60            *        *      *
+// *   Date:    02 nov 2024              *         *
+// *   Version: v0.9.59            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -31,7 +31,7 @@ import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.60";
+const moduleVersion = "0.9.59";
 
 class Self {
     constructor(_code) {
@@ -138,7 +138,7 @@ async function checkBalance(_burner, _address, _decimals=1e18 ) {
             let _bigIntBalance = await balanceOf(_burner, _address);
             let _balance = Number(_bigIntBalance)/_decimals;
             resolve(
-                _balance
+                balance
             );
         } catch (err) {
             console.log(err);
@@ -206,5 +206,5 @@ async function idleMsg(_input) {
     }); 
 }
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, checkBalance, createBurnMsg, idleMsg };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, createBurnMsg, idleMsg };
 
