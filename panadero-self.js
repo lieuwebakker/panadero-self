@@ -3,8 +3,8 @@
 // *   API : panadero-self.js      * *           * 
 // *   Location modules//panadero-self   * * 
 // *   Modified :JaWsome.Orbit   *                 * 
-// *   Date:    02 nov 2024              *         *
-// *   Version: v0.9.59            *        *      *
+// *   Date:    23 nov 2024              *         *
+// *   Version: v0.9.60            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 //  change 0.9.47 : add totalSupply
@@ -31,7 +31,7 @@ import axios from 'axios';
 
 const moduleName = "Panadero-SELF";
 const moduleGit = "https://github.com/lieuwebakker/panadero-self";
-const moduleVersion = "0.9.59";
+const moduleVersion = "0.9.60";
 
 class Self {
     constructor(_code) {
@@ -60,7 +60,7 @@ class Self {
             {'name':'leafygreen', "code":'#48C9B0'},
             {'name':'sunkissedyellow', "code":'#F4D03F'},
             {'name':'groovygray', "code":'#D7DBDD'}
-            ];
+        ];
     }
 }
 
@@ -106,7 +106,6 @@ async function balanceOf(_c, _a) {
     return( await rc(_c.address,_c.abi,"balanceOf",[_a]));
 }
 
-
 async function resolveAllNames(_n) {
     _network="bsc";
     let _wallet = await rc(c,abi,"ownerOf",[keccak256(toUtf8Bytes(_n))]);
@@ -138,7 +137,7 @@ async function checkBalance(_burner, _address, _decimals=1e18 ) {
             let _bigIntBalance = await balanceOf(_burner, _address);
             let _balance = Number(_bigIntBalance)/_decimals;
             resolve(
-                balance
+                _balance
             );
         } catch (err) {
             console.log(err);
@@ -206,5 +205,5 @@ async function idleMsg(_input) {
     }); 
 }
 
-export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, createBurnMsg, idleMsg };
+export { Self, moduleName, moduleVersion, moduleGit, resolveName, resolveAllNames, totalSupply, checkSupplyDelta, checkBalance, createBurnMsg, idleMsg };
 
